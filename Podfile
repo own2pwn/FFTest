@@ -14,7 +14,7 @@ target 'FFTest' do
   pod "Nuke", "5.1"           # Benchmarked (by its own author) as the best
   pod "Alamofire", "4.4.0"    # Although being a big overhead in this project, 
                               # I still think Alamofire has some value on the abstractions it provides.
-  pod "PromiseKit", "4.2.1"   # Simplifies life in general
+  pod "PromiseKit", "4.2.0"   # Simplifies life in general
 
   target 'FFTestTests' do
     inherit! :search_paths
