@@ -12,9 +12,10 @@ target 'FFTest' do
   # Pods for FFTest
   pod "Cartography", "1.0.1"  # Provides a simpler way for using AutoLayout  
   pod "Nuke", "5.1"           # Benchmarked (by its own author) as the best
-  pod "Alamofire", "4.4.0"    # Although being a big overhead in this project, 
-                              # I still think Alamofire has some value on the abstractions it provides.
   pod "PromiseKit", "4.2.0"   # Simplifies life in general
+  pod "Argo", "4.1.2"         # Parsing JSON
+  pod "Curry", "3.0.0"        # Introduces currying for parsing JSON with custom operators
+  pod "CryptoSwift", "0.6.9"  # For securing/encripting
 
   target 'FFTestTests' do
     inherit! :search_paths
