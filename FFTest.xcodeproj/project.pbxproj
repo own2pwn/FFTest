@@ -34,6 +34,7 @@
 		17D9EE041ED7A94C00DBBD13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D9EE021ED7A94C00DBBD13 /* LaunchScreen.storyboard */; };
 		17D9EE0F1ED7A94C00DBBD13 /* FFTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9EE0E1ED7A94C00DBBD13 /* FFTestTests.swift */; };
 		17D9EE1A1ED7A94C00DBBD13 /* FFTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9EE191ED7A94C00DBBD13 /* FFTestUITests.swift */; };
+		17E8946D1EDB66AA001B27A6 /* LoadingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E8946C1EDB66AA001B27A6 /* LoadingImageView.swift */; };
 		863454F91CD7BCEE4EED05A0 /* Pods_FFTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 881D81E866068D28B5FD9B94 /* Pods_FFTest.framework */; };
 		A720333C3EC0C49DB35245D6 /* Pods_FFTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851D0B277707282F4CAC07FF /* Pods_FFTestUITests.framework */; };
 		FB0F9F064390AF989F50C110 /* Pods_FFTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907CC2B4B85CB37E426442B7 /* Pods_FFTestTests.framework */; };
@@ -90,6 +91,7 @@
 		17D9EE151ED7A94C00DBBD13 /* FFTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D9EE191ED7A94C00DBBD13 /* FFTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFTestUITests.swift; sourceTree = "<group>"; };
 		17D9EE1B1ED7A94C00DBBD13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17E8946C1EDB66AA001B27A6 /* LoadingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingImageView.swift; path = Views/LoadingImageView.swift; sourceTree = "<group>"; };
 		8098566D3F035B8AF7A188D1 /* Pods-FFTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FFTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FFTestTests/Pods-FFTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		851D0B277707282F4CAC07FF /* Pods_FFTestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FFTestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		881D81E866068D28B5FD9B94 /* Pods_FFTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FFTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +196,7 @@
 			children = (
 				17409FEB1EDB266D00D810E2 /* Items */,
 				17409FE61EDB1F6200D810E2 /* NavigationBar.swift */,
+				17E8946C1EDB66AA001B27A6 /* LoadingImageView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17409FD51ED9F90100D810E2 /* Parser.swift in Sources */,
+				17E8946D1EDB66AA001B27A6 /* LoadingImageView.swift in Sources */,
 				17409FE11EDA565500D810E2 /* CustomError.swift in Sources */,
 				17409FDF1EDA034D00D810E2 /* Network.swift in Sources */,
 				176DD6D41ED9E26B0062F77D /* UICollectionView+Extension.swift in Sources */,

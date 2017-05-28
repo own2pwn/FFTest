@@ -28,7 +28,7 @@ class HeroCell: UICollectionViewCell {
     
     internal lazy var label: UILabel = HeroCell.newLabel()
     internal lazy var overlay: UIView = HeroCell.newLayerView()
-    internal lazy var imageView: UIImageView = HeroCell.newImageView()
+    internal lazy var imageView: LoadingImageView = HeroCell.newLoadingImageView()
     
     // MARK: - Lifecycle
     
@@ -75,29 +75,7 @@ class HeroCell: UICollectionViewCell {
     
     private func configure(image url: URL?) {
         
-        guard let url = url else {
-            
-            imageView.image = nil
-            return
-        }
-        
-        imageView.contentMode = .scaleAspectFill
-        
-        let request = Nuke.Request(url: url)
-        
-        Nuke.loadImage(with: request, into: imageView) {
-            [weak self] response, isFromMemoryCache in
-            
-            switch response {
-                
-            case let .success(image):
-                self?.imageView.setAnimated(image: image,
-                                            isFromMemoryCache: isFromMemoryCache)
-                
-            default:
-                return
-            }
-        }
+        _ = imageView.configure(with: url)
     }
     
     private func addSubviews() {
@@ -158,9 +136,9 @@ extension HeroCell {
         }
     }
     
-    fileprivate final class func newImageView() -> UIImageView {
+    fileprivate final class func newLoadingImageView() -> LoadingImageView {
         
-        return UIImageView().tap {
+        return LoadingImageView().tap {
             
             $0.isOpaque = true
             $0.backgroundColor = Colors.brightGray
