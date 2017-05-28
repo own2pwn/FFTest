@@ -18,12 +18,6 @@ struct HeroCellConfiguration {
 
 class HeroCell: UICollectionViewCell {
     
-    /// Preferred height for all HeroCell's
-    class var preferredHeight: CGFloat {
-        
-        return 151.5
-    }
-    
     // MARK: - Properties
     
     internal lazy var label: UILabel = HeroCell.newLabel()

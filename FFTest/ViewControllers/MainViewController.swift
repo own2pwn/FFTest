@@ -113,8 +113,8 @@ extension MainViewController: UICollectionViewDataSource {
                                       forIndexPath: indexPath).tap {
                                         
                                         $0.configure(configuration)
-//                                        $0.layer.shouldRasterize = true
-//                                        $0.layer.rasterizationScale = UIScreen.main.scale
+                                        $0.layer.shouldRasterize = true
+                                        $0.layer.rasterizationScale = UIScreen.main.scale
                                         
         }
     }
@@ -126,7 +126,9 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.width / 2,
-                      height: HeroCell.preferredHeight)
+        // Items should maintain a ratio of 1:1 for complying
+        // with the provided images from Marvel API
+        let maxWidth = collectionView.bounds.width / 2
+        return CGSize(width: maxWidth, height: maxWidth)
     }
 }
