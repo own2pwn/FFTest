@@ -11,15 +11,11 @@ import Cartography
 
 class MainViewController: UIViewController {
     
-    fileprivate let provider: Provider
-    fileprivate var list: [Hero]? {
-        
-        didSet { collectionView.reloadData() }
-    }
+    let collectionViewController: HeroCollectionViewController
     
-    init(with provider: Provider = Provider()) {
+    init(with child: HeroCollectionViewController = HeroCollectionViewController()) {
         
-        self.provider = provider
+        collectionViewController = child
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -30,6 +26,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.navigationItem.title = "MARVEL"
@@ -37,26 +34,18 @@ class MainViewController: UIViewController {
         addSubviews()
         configureEdges()
         layout()
-        
-        _ = provider.fetchList(startingAt: 0, size: 20)
-            .then { list -> Void in
-                
-                self.list = list
-            }
     }
     
     private func addSubviews() {
         
-//        view.addSubview(emptyStateView)
-//        view.addSubview(errorStateView)
-        view.addSubview(collectionView)
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        addChildViewController(collectionViewController)
+        view.addSubview(collectionViewController.view)
+
     }
     
     private func configureEdges() {
         
-        constrain(view, collectionView) { container, collection in
+        constrain(view, collectionViewController.view) { container, collection in
             
             collection.edges == container.edges
         }
@@ -65,70 +54,5 @@ class MainViewController: UIViewController {
     private func layout() {
         
         view.backgroundColor = UIColor.darkGray
-    }
-    
-    fileprivate lazy var collectionView: UICollectionView = MainViewController.newCollectionView()
-}
-
-// MARK: - UI Extension
-extension MainViewController {
-    
-    fileprivate final class func newCollectionView() -> UICollectionView {
-        
-        let layout = UICollectionViewFlowLayout().tap {
-            
-            $0.minimumInteritemSpacing = 0
-            $0.minimumLineSpacing = 0
-        }
-        
-        let top: CGFloat = 0
-        
-        return UICollectionView(frame: CGRect.zero, collectionViewLayout: layout).tap {
-            
-            $0.backgroundColor = Colors.charcoalGrey
-            $0.contentInset.top = top
-            $0.contentInset.bottom = 0
-            $0.scrollIndicatorInsets.top = top
-            
-            $0.register(class: HeroCell.self)
-        }
-    }
-}
-
-extension MainViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return list?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let hero: Hero? = list?[indexPath.row]
-        let configuration = HeroCellConfiguration(title: hero?.name,
-                                                  image: hero?.thumbnail?.asURL)
-        
-        return collectionView.dequeue(cell: HeroCell.self,
-                                      forIndexPath: indexPath).tap {
-                                        
-                                        $0.configure(configuration)
-                                        $0.layer.shouldRasterize = true
-                                        $0.layer.rasterizationScale = UIScreen.main.scale
-                                        
-        }
-    }
-}
-
-extension MainViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        // Items should maintain a ratio of 1:1 for complying
-        // with the provided images from Marvel API
-        let maxWidth = collectionView.bounds.width / 2
-        return CGSize(width: maxWidth, height: maxWidth)
     }
 }
