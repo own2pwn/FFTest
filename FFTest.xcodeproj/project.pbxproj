@@ -45,7 +45,7 @@
 		17D9EDFA1ED7A94C00DBBD13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9EDF91ED7A94C00DBBD13 /* AppDelegate.swift */; };
 		17D9EE011ED7A94C00DBBD13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D9EE001ED7A94C00DBBD13 /* Assets.xcassets */; };
 		17D9EE041ED7A94C00DBBD13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D9EE021ED7A94C00DBBD13 /* LaunchScreen.storyboard */; };
-		17D9EE0F1ED7A94C00DBBD13 /* FFTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9EE0E1ED7A94C00DBBD13 /* FFTestTests.swift */; };
+		17D9EE0F1ED7A94C00DBBD13 /* HeroDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9EE0E1ED7A94C00DBBD13 /* HeroDetailViewControllerSpec.swift */; };
 		17D9EE1A1ED7A94C00DBBD13 /* FFTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D9EE191ED7A94C00DBBD13 /* FFTestUITests.swift */; };
 		17E8946D1EDB66AA001B27A6 /* LoadingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E8946C1EDB66AA001B27A6 /* LoadingImageView.swift */; };
 		863454F91CD7BCEE4EED05A0 /* Pods_FFTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 881D81E866068D28B5FD9B94 /* Pods_FFTest.framework */; };
@@ -113,7 +113,7 @@
 		17D9EE001ED7A94C00DBBD13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17D9EE031ED7A94C00DBBD13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17D9EE0A1ED7A94C00DBBD13 /* FFTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		17D9EE0E1ED7A94C00DBBD13 /* FFTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFTestTests.swift; sourceTree = "<group>"; };
+		17D9EE0E1ED7A94C00DBBD13 /* HeroDetailViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewControllerSpec.swift; sourceTree = "<group>"; };
 		17D9EE101ED7A94C00DBBD13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17D9EE151ED7A94C00DBBD13 /* FFTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D9EE191ED7A94C00DBBD13 /* FFTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFTestUITests.swift; sourceTree = "<group>"; };
@@ -210,6 +210,14 @@
 				176D5A261EDBAEE900DC24A5 /* Series.swift */,
 			);
 			name = Summary;
+			sourceTree = "<group>";
+		};
+		176D5A341EDCD75A00DC24A5 /* ViewControllerSpecs */ = {
+			isa = PBXGroup;
+			children = (
+				17D9EE0E1ED7A94C00DBBD13 /* HeroDetailViewControllerSpec.swift */,
+			);
+			name = ViewControllerSpecs;
 			sourceTree = "<group>";
 		};
 		176DD6BE1ED9D9310062F77D /* Application */ = {
@@ -327,7 +335,7 @@
 		17D9EE0D1ED7A94C00DBBD13 /* FFTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				17D9EE0E1ED7A94C00DBBD13 /* FFTestTests.swift */,
+				176D5A341EDCD75A00DC24A5 /* ViewControllerSpecs */,
 				17D9EE101ED7A94C00DBBD13 /* Info.plist */,
 			);
 			path = FFTestTests;
@@ -692,7 +700,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17D9EE0F1ED7A94C00DBBD13 /* FFTestTests.swift in Sources */,
+				17D9EE0F1ED7A94C00DBBD13 /* HeroDetailViewControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
