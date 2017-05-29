@@ -5,6 +5,7 @@ platform :ios, '9.0'
 # to require iOS 9.0 as the minimum version.
 swift_version = "3.0"
 use_frameworks!
+inhibit_all_warnings!
 
 target 'FFTest' do
   # These are all dependencies I normally use and enjoy using
