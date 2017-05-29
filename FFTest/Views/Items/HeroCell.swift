@@ -20,9 +20,9 @@ class HeroCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    internal lazy var label: UILabel = HeroCell.newLabel()
-    internal lazy var overlay: UIView = HeroCell.newLayerView()
-    internal lazy var imageView: LoadingImageView = HeroCell.newLoadingImageView()
+    fileprivate lazy var label: UILabel = HeroCell.newLabel()
+    fileprivate lazy var overlay: UIView = HeroCell.newLayerView()
+    fileprivate lazy var imageView: LoadingImageView = HeroCell.newLoadingImageView()
     
     // MARK: - Lifecycle
     
