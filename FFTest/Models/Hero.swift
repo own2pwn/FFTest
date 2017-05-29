@@ -18,11 +18,12 @@ struct Hero {
     let modified: String?           // The date the resource was most recently modified.
     let resourceURI: String?        // The canonical URL identifier for this resource.
     let thumbnail: Image?           // The representative image for this character.
+    let comics: [Comic]?            // A resource list containing comics which feature this character.
+    let stories: [Story]?           // A resource list of stories in which this character appears.
+    let events: [Event]?            // A resource list of events in which this character appears.
+    let series: [Series]?           // A resource list of series in which this character appears.
 //    let urls: [String]?             // A set of public web site URLs for the resource.
-//    let comics: [Comic]?            // A resource list containing comics which feature this character.
-//    let stories: [Story]?           // A resource list of stories in which this character appears.
-//    let events: [Event]?            // A resource list of events in which this character appears.
-//    let series: [Series]?            // A resource list of series in which this character appears.
+
 }
 
 extension Hero: Decodable {
@@ -36,10 +37,10 @@ extension Hero: Decodable {
             <*> json <|? "modified"
             <*> json <|? "resourceURI"
             <*> json <|? "thumbnail"
+            <*> json <||? ["comics", "items"]
+            <*> json <||? ["stories", "items"]
+            <*> json <||? ["events", "items"]
+            <*> json <||? ["series", "items"]
 //            <*> json <||? "urls"
-//            <*> json <||? "comics"
-//            <*> json <||? "stories"
-//            <*> json <||? "events"
-//            <*> json <||? "series"
     }
 }
