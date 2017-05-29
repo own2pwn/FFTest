@@ -33,11 +33,11 @@ class SummaryHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(title: String?) {
+    func configure(text: String?) {
         
         defer { setNeedsLayout() }
         
-        label.text = title
+        label.text = text
         label.sizeToFit()
     }
     
@@ -50,11 +50,13 @@ class SummaryHeaderView: UICollectionReusableView {
         
         addSubview(label)
         
-        constrain(self, label) { container, title in
+        constrain(self, label) { container, content in
             
-            title.edges == inset(container.edges, 0, 8, 0, 8)
+            content.edges == inset(container.edges, SummaryHeaderView.spacing)
         }
     }
+    
+    fileprivate static let spacing: CGFloat = 8
 }
 
 // MARK: - UI Components Factory

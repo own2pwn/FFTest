@@ -115,7 +115,7 @@ extension SummaryCollectionViewController: UICollectionViewDataSource {
         return collectionView.dequeueSection(header: SummaryHeaderView.self,
                                              forIndexPath: indexPath).tap {
                                                 
-                                        $0.configure(title: name)
+                                        $0.configure(text: name)
         }
     }
 }

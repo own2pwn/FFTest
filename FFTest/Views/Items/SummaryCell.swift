@@ -20,6 +20,7 @@ class SummaryCell: UICollectionViewCell {
     }
     
     fileprivate lazy var label: UILabel = SummaryCell.newLabel()
+    fileprivate lazy var separator: UIView = SummaryCell.newSeparator()
     
     // MARK: - Lifecycle
     
@@ -61,13 +62,19 @@ class SummaryCell: UICollectionViewCell {
     private func addSubviews() {
         
         contentView.addSubview(label)
+        contentView.addSubview(separator)
     }
     
     private func addContrains() {
         
-        constrain(contentView, label) { container, content in
+        constrain(contentView, label, separator) { container, content, line in
             
             content.edges == inset(container.edges, SummaryCell.spacing)
+            
+            line.leading == container.leading
+            line.trailing == container.trailing
+            line.bottom == container.bottom
+            line.height == 1
         }
     }
     
@@ -83,7 +90,7 @@ class SummaryCell: UICollectionViewCell {
 // MARK: - SummaryCell Components Factory
 extension SummaryCell {
     
-    fileprivate final class func newLabel() -> UILabel {
+    fileprivate class func newLabel() -> UILabel {
         
         return UILabel().tap {
             
@@ -92,10 +99,18 @@ extension SummaryCell {
             $0.isOpaque = true
             $0.backgroundColor = SummaryCell.defaultColor
             $0.textAlignment = NSTextAlignment.right
-            $0.numberOfLines = 1
             
             $0.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow,
                                                        for: .horizontal)
+        }
+    }
+    
+    fileprivate class func newSeparator() -> UIView {
+        
+        return UIView().tap {
+            
+            $0.backgroundColor = Colors.brightGray
+            $0.isOpaque = true
         }
     }
 }
