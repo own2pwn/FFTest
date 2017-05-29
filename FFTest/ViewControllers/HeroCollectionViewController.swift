@@ -205,4 +205,16 @@ extension HeroCollectionViewController: UICollectionViewDelegateFlowLayout {
             loadMore()
         }
     }
+    
+    // MARK: Item Selection
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        
+        guard let hero = list?[indexPath.row] else { return }
+        
+        let heroViewController = HeroDetailViewController(with: hero)
+        
+        navigationController?.pushViewController(heroViewController, animated: true)
+    }
 }

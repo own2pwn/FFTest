@@ -36,6 +36,12 @@ class MainViewController: UIViewController {
         layout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        configureNavigationBar()
+    }
+    
     private func addSubviews() {
         
         addChildViewController(collectionViewController)
@@ -53,5 +59,15 @@ class MainViewController: UIViewController {
     private func layout() {
         
         view.backgroundColor = UIColor.darkGray
+    }
+    
+    private func configureNavigationBar() {
+        
+        guard let bar = navigationController?.navigationBar as? NavigationBar else {
+            
+            return
+        }
+        
+        bar.isTranslucent = false
     }
 }
