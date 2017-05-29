@@ -23,6 +23,15 @@ struct Hero {
     let events: [Event]?            // A resource list of events in which this character appears.
     let series: [Series]?           // A resource list of series in which this character appears.
 //    let urls: [String]?             // A set of public web site URLs for the resource.
+    
+    var strippedName: String? {
+        
+        guard let name = name else {
+            return nil
+        }
+        
+        return name.components(separatedBy: "(").first
+    }
 
 }
 

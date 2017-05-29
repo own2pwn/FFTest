@@ -17,8 +17,12 @@ class HeroDetailViewController: UIViewController {
     
     fileprivate lazy var header: HeroHeaderView = {
         
-        let configuration = HeroHeaderViewConfiguration(title: self.hero.name,
-                                                        image: self.hero.thumbnail?.asURL)
+        let configuration = HeroHeaderViewConfiguration(
+            title: self.hero.name,
+            description: self.hero.description,
+            image: self.hero.thumbnail?.asURL,
+            backgroundImage: self.hero.thumbnail?.asURL
+        )
         
         return HeroHeaderView(with: configuration)
     }()
@@ -42,7 +46,7 @@ class HeroDetailViewController: UIViewController {
         
         super.viewDidLoad()
         
-        self.navigationItem.title = hero.name
+        self.navigationItem.title = hero.strippedName
         
         addSubviews()
         layout()
@@ -70,7 +74,7 @@ class HeroDetailViewController: UIViewController {
             head.top == container.top
             head.leading == container.leading
             head.trailing == container.trailing
-            head.height == container.width - 20
+            head.height == header.preferredHeight(for: view.bounds.width)
             
             summary.top == head.bottom
             summary.leading == container.leading
