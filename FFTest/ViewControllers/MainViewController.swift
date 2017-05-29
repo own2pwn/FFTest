@@ -40,7 +40,6 @@ class MainViewController: UIViewController {
         
         addChildViewController(collectionViewController)
         view.addSubview(collectionViewController.view)
-
     }
     
     private func configureEdges() {

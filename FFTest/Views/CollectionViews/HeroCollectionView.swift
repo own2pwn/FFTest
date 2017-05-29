@@ -31,5 +31,16 @@ class HeroCollectionView: UICollectionView {
         
         backgroundColor = Colors.charcoalGrey
         register(class: HeroCell.self)
+        register(forSectionFooter: LoadingSupplementaryView.self)
+    }
+}
+
+extension HeroCollectionView {
+    
+    func isAtBottom(offset: CGFloat = 0.0) -> Bool {
+        
+        let bottomVerticalOffset = contentSize.height + contentInset.bottom - bounds.height
+        
+        return contentOffset.y >= bottomVerticalOffset - offset
     }
 }

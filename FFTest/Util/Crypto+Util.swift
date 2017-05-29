@@ -17,9 +17,6 @@ class Encrypt {
         return String(Date.timeIntervalSinceReferenceDate)
     }
     
-    private var publicKey: String = "54c685c2d88610c15ada7d4dd9c298f8"
-    private var privateKey: String = "8bcac2aa1d363b1c506bb88da31cc58ddf29d266"
-    
     private func hash(keys: String) -> String? {
         
         return keys.md5()

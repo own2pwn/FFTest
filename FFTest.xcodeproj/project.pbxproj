@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171D744B1EDB91B100F3D6E3 /* LoadingSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D744A1EDB91B100F3D6E3 /* LoadingSupplementaryView.swift */; };
 		17409FD11ED9F88500D810E2 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17409FD01ED9F88500D810E2 /* Provider.swift */; };
 		17409FD31ED9F8F900D810E2 /* Class+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17409FD21ED9F8F900D810E2 /* Class+Util.swift */; };
 		17409FD51ED9F90100D810E2 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17409FD41ED9F90100D810E2 /* Parser.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		171D744A1EDB91B100F3D6E3 /* LoadingSupplementaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingSupplementaryView.swift; path = Views/Items/LoadingSupplementaryView.swift; sourceTree = "<group>"; };
 		17409FD01ED9F88500D810E2 /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Provider.swift; path = Network/Provider.swift; sourceTree = "<group>"; };
 		17409FD21ED9F8F900D810E2 /* Class+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Class+Util.swift"; path = "Util/Class+Util.swift"; sourceTree = "<group>"; };
 		17409FD41ED9F90100D810E2 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Network/Parser.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				17409FEC1EDB26A400D810E2 /* HeroCell.swift */,
+				171D744A1EDB91B100F3D6E3 /* LoadingSupplementaryView.swift */,
 			);
 			name = Items;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				17BDCA011EDB782100464FBE /* HeroCollectionViewController.swift in Sources */,
 				17409FDD1ED9FDB400D810E2 /* Image.swift in Sources */,
 				17409FD71ED9F90E00D810E2 /* Response.swift in Sources */,
+				171D744B1EDB91B100F3D6E3 /* LoadingSupplementaryView.swift in Sources */,
 				17409FE31EDA5DF300D810E2 /* Crypto+Util.swift in Sources */,
 				176DD6C01ED9D94C0062F77D /* Colors.swift in Sources */,
 				17409FD11ED9F88500D810E2 /* Provider.swift in Sources */,

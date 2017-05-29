@@ -13,11 +13,29 @@ import Cartography
 class HeroCollectionViewController: UIViewController {
     
     fileprivate let provider: Provider
+    fileprivate var offset: Int = 0
+    fileprivate let limit: Int = 20
     
-    fileprivate var list: [Hero]? {
+    fileprivate var list: [Hero]? = [] {
         
-        didSet { collectionView.reloadData() }
+        didSet {
+            collectionView.reloadData()
+            isLoading = false
+        }
     }
+    
+    fileprivate var isLoading: Bool = true {
+        didSet {
+            if isLoading {
+                loadingView?.startAnimating()
+            } else{
+                loadingView?.stopAnimating()
+            }
+        }
+    }
+    
+    fileprivate var loadingView: LoadingSupplementaryView?
+    fileprivate(set) lazy var collectionView: HeroCollectionView = HeroCollectionViewController.newCollectionView()
     
     init(with provider: Provider = Provider()) {
         
@@ -40,12 +58,7 @@ class HeroCollectionViewController: UIViewController {
         addSubviews()
         configureEdges()
         layout()
-        
-        _ = provider.fetchList(startingAt: 0, size: 20)
-            .then { list -> Void in
-                
-                self.list = list
-        }
+        loadInitial()
     }
     
     private func addSubviews() {
@@ -69,8 +82,6 @@ class HeroCollectionViewController: UIViewController {
         
         view.backgroundColor = UIColor.darkGray
     }
-    
-    fileprivate(set) lazy var collectionView: HeroCollectionView = HeroCollectionViewController.newCollectionView()
 }
 
 // MARK: - UI Extension
@@ -105,6 +116,58 @@ extension HeroCollectionViewController: UICollectionViewDataSource {
                                         
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+
+        loadingView = collectionView.dequeueSection(footer: LoadingSupplementaryView.self,
+                                                    forIndexPath: indexPath)
+        
+        loadingView?.layoutIfNeeded()
+        
+        return loadingView!
+    }
+    
+    // MARK: Loading Elements
+    
+    /// Loads initial batch of Heros
+    fileprivate func loadInitial() {
+        
+        print("LOAD INITIAL")
+        
+        _ = provider.fetchList(startingAt: offset, size: limit)
+            .then { list in
+                
+                self.list = list
+            }
+    }
+    
+    /// Loads next batch of Heros, offsetted by the current count or an estimated value
+    fileprivate func loadMore() {
+        
+        guard isLoading == false else { return }
+        
+        print("LOAD MORE")
+        
+        isLoading = true
+        
+        offset = list?.count ?? offset + limit
+        
+        _ = provider.fetchList(startingAt: offset, size: limit)
+            .then(execute: add)
+    }
+    
+    /// Add the newly fetched Hero list to the existing one
+    ///
+    /// - Parameter list: fetched Hero List
+    fileprivate func add(list: [Hero]?) {
+        
+        guard let old = self.list, let new = list
+            else { return }
+        
+        self.list = old + new
+    }
 }
 
 extension HeroCollectionViewController: UICollectionViewDelegateFlowLayout {
@@ -117,5 +180,29 @@ extension HeroCollectionViewController: UICollectionViewDelegateFlowLayout {
         // with the provided images from Marvel API
         let maxWidth = collectionView.bounds.width / 2
         return CGSize(width: maxWidth, height: maxWidth)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        guard let list = list, list.isEmpty == false else {
+            
+            return CGSize(width: collectionView.bounds.width,
+                          height: collectionView.bounds.height)
+
+        }
+        
+        return CGSize(width: collectionView.bounds.width,
+                      height: LoadingSupplementaryView.preferredHeight)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        // Load More when its two rows to the end
+        if collectionView.isAtBottom(offset: collectionView.bounds.width) {
+            
+            loadMore()
+        }
     }
 }
