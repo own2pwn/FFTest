@@ -34,6 +34,7 @@
 		176D5A2B1EDBB1C400DC24A5 /* SummaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176D5A2A1EDBB1C400DC24A5 /* SummaryHeaderView.swift */; };
 		176D5A2D1EDBB48900DC24A5 /* SummaryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176D5A2C1EDBB48900DC24A5 /* SummaryCollectionViewController.swift */; };
 		176D5A311EDBBA7700DC24A5 /* SummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176D5A301EDBBA7700DC24A5 /* SummaryCell.swift */; };
+		176D5A331EDCBB0E00DC24A5 /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176D5A321EDCBB0E00DC24A5 /* NSAttributedString+Extension.swift */; };
 		176DD6C01ED9D94C0062F77D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DD6BF1ED9D94C0062F77D /* Colors.swift */; };
 		176DD6C31ED9D9DD0062F77D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DD6C21ED9D9DD0062F77D /* UIColor+Extension.swift */; };
 		176DD6C91ED9DCA80062F77D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DD6C81ED9DCA80062F77D /* MainViewController.swift */; };
@@ -98,6 +99,7 @@
 		176D5A2A1EDBB1C400DC24A5 /* SummaryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SummaryHeaderView.swift; path = Views/Items/SummaryHeaderView.swift; sourceTree = "<group>"; };
 		176D5A2C1EDBB48900DC24A5 /* SummaryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SummaryCollectionViewController.swift; path = ViewControllers/SummaryCollectionViewController.swift; sourceTree = "<group>"; };
 		176D5A301EDBBA7700DC24A5 /* SummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SummaryCell.swift; path = Views/Items/SummaryCell.swift; sourceTree = "<group>"; };
+		176D5A321EDCBB0E00DC24A5 /* NSAttributedString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSAttributedString+Extension.swift"; path = "Extensions/NSAttributedString+Extension.swift"; sourceTree = "<group>"; };
 		176DD6BF1ED9D94C0062F77D /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = Application/Colors.swift; sourceTree = "<group>"; };
 		176DD6C21ED9D9DD0062F77D /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extension.swift"; path = "Extensions/UIColor+Extension.swift"; sourceTree = "<group>"; };
 		176DD6C41ED9DB770062F77D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				176DD6D31ED9E26B0062F77D /* UICollectionView+Extension.swift */,
 				176DD6D51ED9E32D0062F77D /* UICollectionReusableView+Extension.swift */,
 				17409FEE1EDB2B5B00D810E2 /* UIImageView+Extension.swift */,
+				176D5A321EDCBB0E00DC24A5 /* NSAttributedString+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				17409FD11ED9F88500D810E2 /* Provider.swift in Sources */,
 				17409FE51EDA65F400D810E2 /* Endpoint.swift in Sources */,
 				176DD6D61ED9E32D0062F77D /* UICollectionReusableView+Extension.swift in Sources */,
+				176D5A331EDCBB0E00DC24A5 /* NSAttributedString+Extension.swift in Sources */,
 				171D744D1EDB9D9D00F3D6E3 /* HeroDetailViewController.swift in Sources */,
 				176D5A201EDBAA2E00DC24A5 /* Summary.swift in Sources */,
 				17409FED1EDB26A400D810E2 /* HeroCell.swift in Sources */,
