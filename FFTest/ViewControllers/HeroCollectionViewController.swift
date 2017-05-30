@@ -97,6 +97,7 @@ extension HeroCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
+        
         return list?.count ?? 0
     }
     
@@ -113,7 +114,6 @@ extension HeroCollectionViewController: UICollectionViewDataSource {
                                         $0.configure(configuration)
                                         $0.layer.shouldRasterize = true
                                         $0.layer.rasterizationScale = UIScreen.main.scale
-                                        
         }
     }
     
@@ -133,9 +133,7 @@ extension HeroCollectionViewController: UICollectionViewDataSource {
     
     /// Loads initial batch of Heros
     fileprivate func loadInitial() {
-        
-        print("LOAD INITIAL")
-        
+                
         _ = provider.fetchList(startingAt: offset, size: limit)
             .then { list in
                 
@@ -147,8 +145,6 @@ extension HeroCollectionViewController: UICollectionViewDataSource {
     fileprivate func loadMore() {
         
         guard isLoading == false else { return }
-        
-        print("LOAD MORE")
         
         isLoading = true
         

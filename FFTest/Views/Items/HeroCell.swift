@@ -69,7 +69,7 @@ class HeroCell: UICollectionViewCell {
     
     private func configure(image url: URL?) {
         
-        _ = imageView.configure(with: url)
+        imageView.configure(with: url)
     }
     
     private func addSubviews() {

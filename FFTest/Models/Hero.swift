@@ -22,8 +22,8 @@ struct Hero {
     let stories: [Story]?           // A resource list of stories in which this character appears.
     let events: [Event]?            // A resource list of events in which this character appears.
     let series: [Series]?           // A resource list of series in which this character appears.
-//    let urls: [String]?             // A set of public web site URLs for the resource.
     
+    /// Cleaner version of the name attribute.
     var strippedName: String? {
         
         guard let name = name else {
@@ -32,7 +32,6 @@ struct Hero {
         
         return name.components(separatedBy: "(").first
     }
-
 }
 
 extension Hero: Decodable {
@@ -50,6 +49,5 @@ extension Hero: Decodable {
             <*> json <||? ["stories", "items"]
             <*> json <||? ["events", "items"]
             <*> json <||? ["series", "items"]
-//            <*> json <||? "urls"
     }
 }

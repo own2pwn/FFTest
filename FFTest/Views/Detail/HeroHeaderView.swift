@@ -155,7 +155,7 @@ class HeroHeaderView: UIView {
     
     private func configure(background: URL?) {
         
-        _ = backgroundView.configure(with: background)
+        backgroundView.configure(with: background)
     }
 }
 

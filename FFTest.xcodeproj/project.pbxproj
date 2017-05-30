@@ -109,7 +109,6 @@
 		176DD6D51ED9E32D0062F77D /* UICollectionReusableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionReusableView+Extension.swift"; path = "Extensions/UICollectionReusableView+Extension.swift"; sourceTree = "<group>"; };
 		17BDC9F91EDB715F00464FBE /* HeroCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroCollectionView.swift; path = Views/CollectionViews/HeroCollectionView.swift; sourceTree = "<group>"; };
 		17BDCA001EDB782100464FBE /* HeroCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroCollectionViewController.swift; path = ViewControllers/HeroCollectionViewController.swift; sourceTree = "<group>"; };
-		17C245D91ED7BCD100520B12 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "Supporting Files/Localizable.strings"; sourceTree = "<group>"; };
 		17D9EDF61ED7A94C00DBBD13 /* FFTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D9EDF91ED7A94C00DBBD13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D9EE001ED7A94C00DBBD13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -289,7 +288,6 @@
 		17C245D61ED7BBED00520B12 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				17C245D91ED7BCD100520B12 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

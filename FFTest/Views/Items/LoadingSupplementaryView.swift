@@ -63,7 +63,6 @@ class LoadingSupplementaryView: UICollectionReusableView {
     }
 }
 
-
 // MARK: - UI Components Factory
 extension LoadingSupplementaryView {
     

@@ -23,8 +23,7 @@ class Parser {
             
             guard let value: Container = decoded.value?.data else {
                 
-                print(json)
-                
+                // Reject the Promise with a contextualized parsing error
                 reject(CustomError.parsing(error: decoded.error))
                 return
             }

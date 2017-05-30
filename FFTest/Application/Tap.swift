@@ -17,7 +17,7 @@ extension Tap {
     /// Provide alterations to a initialized object
     /// - parameter block: block with self object
     /// - returns: Self initialized object with changes
-    func tap(_ block: (Self) -> Void ) -> Self {
+    func tap(_ block: (Self) -> Void) -> Self {
         
         block(self)
         return self

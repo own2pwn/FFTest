@@ -9,6 +9,8 @@
 import Foundation
 import PromiseKit
 
+
+/// Wrapper class for handling Network requests
 class Network {
     
     fileprivate let session: URLSession
@@ -40,7 +42,7 @@ extension Network {
                 case let (_, error?):
                     reject(error)
                 default:
-                    print("NOTHING FOUND IN GET(with url)")
+                    print("NOTHING FOUND IN GET(with \(url))")
                     reject(error!)
                 }
             }

@@ -44,7 +44,6 @@ class SummaryCollectionViewController: UIViewController {
     
     private func addSubviews() {
         
-        //        view.addSubview(emptyStateView)
         view.addSubview(collectionView)
         collectionView.dataSource = self
         collectionView.delegate = self

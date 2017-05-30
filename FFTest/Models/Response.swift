@@ -15,8 +15,6 @@ struct Response {
     let code: Int?                  // The HTTP status code of the returned result.
     let status: String?             // description of the call status.,
     let data: Container?            // The results returned by the call.,
-//    let attributionText: String?
-//    let attributionHTML: String?
 }
 
 extension Response: Decodable {

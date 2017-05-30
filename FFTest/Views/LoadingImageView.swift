@@ -9,7 +9,6 @@
 import UIKit
 import Cartography
 import Nuke
-import PromiseKit
 
 fileprivate enum LoadingState {
     
@@ -23,7 +22,6 @@ final class LoadingImageView: UIImageView {
     // MARK: - Properties
     
     fileprivate var url: URL?
-    fileprivate lazy var errorLabel = LoadingImageView.newErrorLabel()
     fileprivate lazy var activityIndicatorView = LoadingImageView.newIndicatorView()
     
     fileprivate var state: LoadingState = .loading {
@@ -33,15 +31,12 @@ final class LoadingImageView: UIImageView {
             switch  state {
                 
             case .loading:
-//                errorLabel.isHidden = true
                 activityIndicatorView.startAnimating()
                 
             case .error:
-//                errorLabel.isHidden = false
                 activityIndicatorView.stopAnimating()
                 
             case .success:
-//                errorLabel.isHidden = true
                 activityIndicatorView.stopAnimating()
             }
             
@@ -78,11 +73,6 @@ final class LoadingImageView: UIImageView {
         
         super.layoutSubviews()
         
-//        if !errorLabel.isHidden {
-//            
-//            errorLabel.sizeToFit()
-//        }
-        
         if !activityIndicatorView.isHidden {
             
             activityIndicatorView.sizeToFit()
@@ -91,7 +81,7 @@ final class LoadingImageView: UIImageView {
     }
     
     
-    func configure(with url: URL?) -> Promise<Void> {
+    func configure(with url: URL?) {
         
         self.url = url
         state = .loading
@@ -100,28 +90,23 @@ final class LoadingImageView: UIImageView {
         guard let url = url else {
             
             state = .error
-            return Promise(error: CustomError.empty)
+            return
         }
         
-        return Promise { fullfil, reject in
+        let request = Nuke.Request(url: url)
+        
+        Nuke.loadImage(with: request, into: self) {
+            [weak self] response, isFromMemoryCache in
             
-            let request = Nuke.Request(url: url)
-            
-            Nuke.loadImage(with: request, into: self) {
-                [weak self] response, isFromMemoryCache in
+            switch response {
                 
-                switch response {
-                    
-                case let .success(image):
-                    self?.state = .success
-                    self?.setAnimated(image: image,
-                                      isFromMemoryCache: isFromMemoryCache)
-                    fullfil()
-                    
-                default:
-                    self?.state = .error
-                    reject(CustomError.networking)
-                }
+            case let .success(image):
+                self?.state = .success
+                self?.setAnimated(image: image,
+                                  isFromMemoryCache: isFromMemoryCache)
+                
+            default:
+                self?.state = .error
             }
         }
     }
@@ -130,24 +115,12 @@ final class LoadingImageView: UIImageView {
     
     fileprivate func setup() {
         
-//        addSubview(errorLabel)
         addSubview(activityIndicatorView)
     }
 }
 
 // MARK: - UI Components Factory
 extension LoadingImageView {
-
-    fileprivate class func newErrorLabel() -> UILabel {
-        
-        return UILabel().tap {
-
-            $0.textAlignment = .center
-            $0.numberOfLines = 1
-            $0.isHidden = true
-            $0.text = "ERROR"
-        }
-    }
     
     fileprivate class func newIndicatorView() -> UIActivityIndicatorView {
         

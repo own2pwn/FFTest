@@ -18,23 +18,32 @@ class Provider {
         self.network = network
     }
     
+    /// Syntax sugar for showing the System Network ActivityIndicator
+    /// The provider itself is responsible for triggering the Network ActivityIndicator
     func showIndicator() {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
+    /// Syntax sugar for hiding the System Network ActivityIndicator
     func hideIndicator() {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
+    /// Fetch a limited Hero List, paginated with an offset
+    ///
+    /// - Parameters:
+    ///   - offset: starting offset for the next elements
+    ///   - limit: elements maximum range limit
+    /// - Returns: Promise with a possible Hero Array
     func fetchList(startingAt offset: Int, size limit: Int) -> Promise<[Hero]?> {
         
         showIndicator()
         
         let url = Endpoint.list(offset: offset, limit: limit).url()
         
-        print("GET: \(url)")
+        print("GET: \(url)") // FIXME: Delete this before deploy
         
         return network.GET(with: url)
             .then(execute: Parser.parse)
@@ -49,13 +58,17 @@ class Provider {
             .always(execute: hideIndicator)
     }
     
+    /// Fetchs a specific Hero based on a given identifier
+    ///
+    /// - Parameter id: Hero Marvel API identifier
+    /// - Returns: Promise with a possible Hero
     func fetchHero(_ id: Int) -> Promise<Hero?> {
         
         showIndicator()
         
         let url = Endpoint.hero(id: id).url()
         
-        print("GET: \(url)")
+        print("GET: \(url)") // FIXME: Delete this before deploy
         
         return network.GET(with: url)
             .then(execute: Parser.parse)
