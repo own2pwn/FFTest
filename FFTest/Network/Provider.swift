@@ -37,11 +37,13 @@ class Provider {
     ///   - offset: starting offset for the next elements
     ///   - limit: elements maximum range limit
     /// - Returns: Promise with a possible Hero Array
-    func fetchList(startingAt offset: Int, size limit: Int) -> Promise<[Hero]?> {
+    func fetchList(startingAt offset: Int,
+                   size limit: Int,
+                   filtering string: String? = nil) -> Promise<[Hero]?> {
         
         showIndicator()
         
-        let url = Endpoint.list(offset: offset, limit: limit).url()
+        let url = Endpoint.list(offset: offset, limit: limit, filter: string).url()
         
         print("GET: \(url)") // FIXME: Delete this before deploy
         
@@ -50,31 +52,6 @@ class Provider {
             .then { container in
                
                 return container.results
-            }
-            .catch { error in
-                
-                print("Error: \(error)")
-            }
-            .always(execute: hideIndicator)
-    }
-    
-    /// Fetchs a specific Hero based on a given identifier
-    ///
-    /// - Parameter id: Hero Marvel API identifier
-    /// - Returns: Promise with a possible Hero
-    func fetchHero(_ id: Int) -> Promise<Hero?> {
-        
-        showIndicator()
-        
-        let url = Endpoint.hero(id: id).url()
-        
-        print("GET: \(url)") // FIXME: Delete this before deploy
-        
-        return network.GET(with: url)
-            .then(execute: Parser.parse)
-            .then { container in
-                
-                return container.results?.first
             }
             .catch { error in
                 

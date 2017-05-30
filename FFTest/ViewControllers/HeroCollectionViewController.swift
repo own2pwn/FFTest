@@ -12,6 +12,12 @@ import Cartography
 
 class HeroCollectionViewController: UIViewController {
     
+    /// Filter CollectionView content with String
+    /// Setting this property will trigger the content refresh
+    var filter: String? {
+        didSet{ loadInitial(filtering: filter) }
+    }
+    
     fileprivate let provider: Provider
     fileprivate var offset: Int = 0
     fileprivate let limit: Int = 20
@@ -132,9 +138,9 @@ extension HeroCollectionViewController: UICollectionViewDataSource {
     // MARK: Loading Elements
     
     /// Loads initial batch of Heros
-    fileprivate func loadInitial() {
+    fileprivate func loadInitial(filtering string: String? = nil) {
                 
-        _ = provider.fetchList(startingAt: offset, size: limit)
+        _ = provider.fetchList(startingAt: offset, size: limit, filtering: string)
             .then { list in
                 
                 self.list = list
@@ -150,7 +156,7 @@ extension HeroCollectionViewController: UICollectionViewDataSource {
         
         offset = list?.count ?? offset + limit
         
-        _ = provider.fetchList(startingAt: offset, size: limit)
+        _ = provider.fetchList(startingAt: offset, size: limit, filtering: filter)
             .then(execute: add)
     }
     

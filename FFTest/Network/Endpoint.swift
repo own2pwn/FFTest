@@ -12,7 +12,7 @@ import Foundation
 /// Provide an Endpoint access for connecting to Marvel API
 enum Endpoint {
     
-    case list(offset: Int, limit: Int)
+    case list(offset: Int, limit: Int, filter: String?)
     case hero(id: Int)
 }
 
@@ -22,8 +22,16 @@ extension Endpoint {
         
         switch self {
             
-        case let .list(offset, limit):
-            return "/characters?orderBy=-modified&limit=\(limit)&offset=\(offset)"
+        case let .list(offset, limit, filter):
+            let path = "/characters?orderBy=-modified"
+                + "&limit=\(limit)"
+                + "&offset=\(offset)"
+                
+            if let filter = filter, filter.isEmpty == false {
+                return path + "&nameStartsWith=\(filter)"
+            }
+            
+            return path
             
         case let .hero(id):
             return "/characters/\(id)?"
