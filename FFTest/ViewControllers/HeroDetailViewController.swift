@@ -12,7 +12,7 @@ import Cartography
 
 class HeroDetailViewController: UIViewController {
     
-    fileprivate let hero: Hero
+    let hero: Hero
     fileprivate var summaryViewController: SummaryCollectionViewController
     
     fileprivate lazy var header: HeroHeaderView = {
@@ -91,6 +91,18 @@ class HeroDetailViewController: UIViewController {
         }
         
         bar.isTranslucent = true
+    }
+    
+    // MARK: - Previewing Actions
+    override var previewActionItems: [UIPreviewActionItem] {
+        
+        let favouriteAction = UIPreviewAction(title: "Add to Favourites", style: .default) {
+            (action, viewController) -> Void in
+            
+            // TODO: Add to Favorites section
+        }
+        
+        return [favouriteAction]
     }
 }
 

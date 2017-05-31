@@ -36,6 +36,7 @@ class MainViewController: UIViewController {
         addSubviews()
         configureEdges()
         layout()
+        configureTouches()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +79,14 @@ class MainViewController: UIViewController {
         )
         
         navigationItem.rightBarButtonItem = searchButton
+    }
+    
+    private func configureTouches() {
+        
+        if(traitCollection.forceTouchCapability == .available) {
+        
+            registerForPreviewing(with: self, sourceView: view)
+        }
     }
 }
 
@@ -136,5 +145,29 @@ extension MainViewController {
     
     func search(_ text: String?) {
         collectionViewController.filter = text
+    }
+}
+
+// MARK: - Previewing Delegate
+extension MainViewController: UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                           viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        let heroPreviewVC = collectionViewController.previewingViewController(at: location)
+        
+        heroPreviewVC?.preferredContentSize = CGSize(width: 0.0, height: 300)
+        
+        previewingContext.sourceRect = collectionViewController.cellRect(at: location)
+        
+        return heroPreviewVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        
+        
+        guard let heroViewController = viewControllerToCommit as? HeroDetailViewController else { return }
+        
+        navigationController?.pushViewController(heroViewController, animated: true)
     }
 }

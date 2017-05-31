@@ -89,6 +89,35 @@ class HeroCollectionViewController: UIViewController {
     }
 }
 
+// MARK: - Previewing Helpers
+extension HeroCollectionViewController {
+    
+    func previewingViewController(at position: CGPoint) -> UIViewController? {
+        
+        guard let indexPath = collectionView.indexPathForItem(at: position)
+            else { return nil }
+
+        guard let hero = list?[indexPath.row] else { return nil }
+        
+        return HeroDetailViewController(with: hero)
+    }
+    
+    func cellRect(at position: CGPoint) -> CGRect {
+        
+        if let indexPath = collectionView.indexPathForItem(at: position),
+            let cell = collectionView.cellForItem(at: indexPath) {
+            
+            return cell.frame
+        }
+        
+        // Return a default estimate for the cell CGRect
+        return CGRect(x: view.center.x,
+                      y: position.y,
+                      width: collectionView.bounds.width / 2,
+                      height: collectionView.bounds.width / 2)
+    }
+}
+
 // MARK: - UI Extension
 extension HeroCollectionViewController {
     
