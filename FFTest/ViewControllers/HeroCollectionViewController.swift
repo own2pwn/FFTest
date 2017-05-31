@@ -23,10 +23,9 @@ class HeroCollectionViewController: UIViewController {
     fileprivate let limit: Int = 20
     
     fileprivate var list: [Hero]? = [] {
-        
         didSet {
             collectionView.reloadData()
-            isLoading = false
+            isLoading = list?.isEmpty ?? true
         }
     }
     
@@ -139,6 +138,8 @@ extension HeroCollectionViewController: UICollectionViewDataSource {
     
     /// Loads initial batch of Heros
     fileprivate func loadInitial(filtering string: String? = nil) {
+        
+        self.list = nil
                 
         _ = provider.fetchList(startingAt: offset, size: limit, filtering: string)
             .then { list in

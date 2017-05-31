@@ -13,6 +13,8 @@ class MainViewController: UIViewController {
     
     let collectionViewController: HeroCollectionViewController
     
+    fileprivate var searchController: SearchController?
+    
     init(with child: HeroCollectionViewController = HeroCollectionViewController()) {
         
         collectionViewController = child
@@ -29,7 +31,7 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         
-        self.navigationItem.title = "MARVEL"
+        self.title = "MARVEL"
         
         addSubviews()
         configureEdges()
@@ -61,13 +63,78 @@ class MainViewController: UIViewController {
         view.backgroundColor = UIColor.darkGray
     }
     
-    private func configureNavigationBar() {
+    fileprivate func configureNavigationBar() {
         
-        guard let bar = navigationController?.navigationBar as? NavigationBar else {
+        if let bar = navigationController?.navigationBar as? NavigationBar {
             
-            return
+            bar.isTranslucent = false
         }
         
-        bar.isTranslucent = false
+        navigationItem.titleView = nil
+
+        // Adds the SearchButton to the Controllers NavigationItem
+        let searchButton = UIBarButtonItem(
+            barButtonSystemItem: .search, target: self, action: #selector(activateSearch)
+        )
+        
+        navigationItem.rightBarButtonItem = searchButton
+    }
+}
+
+// MARK: - Search Controller
+extension MainViewController {
+    
+    func activateSearch() {
+        
+        searchController = SearchController(cancelAction: deactivateSearch,
+                                            submitAction: search(_:))
+        
+        guard let searchController = searchController else { return }
+        
+        let items: [UIBarButtonItem] = (navigationItem.leftBarButtonItems ?? [])
+            + (navigationItem.rightBarButtonItems ?? [])
+        
+        _ = items.flatMap { item in
+            UIView.animate(withDuration: 0.3, animations: {
+                item.tintColor = Colors.clear
+                item.customView?.alpha = 0
+            })
+        }
+        
+        let searchBarFrame = searchController.searchBar.frame
+        
+        navigationItem.rightBarButtonItem = nil
+        searchController.searchBar.alpha = 0
+        
+        searchController.searchBar.frame = CGRect(
+            x: searchBarFrame.origin.x,
+            y: searchBarFrame.size.height,
+            width: searchBarFrame.size.width,
+            height: searchBarFrame.size.height
+        )
+        
+        navigationItem.titleView = searchController.searchBar
+        
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.searchController?.searchBar.alpha = 1
+        },
+        completion: { [weak self] _ in
+            self?.searchController?.searchBar.setShowsCancelButton(true, animated: true)
+            self?.searchController?.searchBar.becomeFirstResponder()
+        })
+    }
+    
+    func deactivateSearch() {
+
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.searchController?.searchBar.alpha = 0
+        },
+       completion: { [weak self] _ in
+            self?.configureNavigationBar()
+        })
+    }
+    
+    func search(_ text: String?) {
+        collectionViewController.filter = text
     }
 }

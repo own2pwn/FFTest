@@ -10,6 +10,7 @@
 		171D744B1EDB91B100F3D6E3 /* LoadingSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D744A1EDB91B100F3D6E3 /* LoadingSupplementaryView.swift */; };
 		171D744D1EDB9D9D00F3D6E3 /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D744C1EDB9D9D00F3D6E3 /* HeroDetailViewController.swift */; };
 		171D74501EDB9FC400F3D6E3 /* HeroHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D744F1EDB9FC400F3D6E3 /* HeroHeaderView.swift */; };
+		173900FA1EDDF70A00D6778C /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173900F91EDDF70A00D6778C /* SearchController.swift */; };
 		17409FD11ED9F88500D810E2 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17409FD01ED9F88500D810E2 /* Provider.swift */; };
 		17409FD31ED9F8F900D810E2 /* Class+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17409FD21ED9F8F900D810E2 /* Class+Util.swift */; };
 		17409FD51ED9F90100D810E2 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17409FD41ED9F90100D810E2 /* Parser.swift */; };
@@ -75,6 +76,7 @@
 		171D744A1EDB91B100F3D6E3 /* LoadingSupplementaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingSupplementaryView.swift; path = Views/Items/LoadingSupplementaryView.swift; sourceTree = "<group>"; };
 		171D744C1EDB9D9D00F3D6E3 /* HeroDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroDetailViewController.swift; path = ViewControllers/HeroDetailViewController.swift; sourceTree = "<group>"; };
 		171D744F1EDB9FC400F3D6E3 /* HeroHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeroHeaderView.swift; path = Views/Detail/HeroHeaderView.swift; sourceTree = "<group>"; };
+		173900F91EDDF70A00D6778C /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchController.swift; path = ViewControllers/SearchController.swift; sourceTree = "<group>"; };
 		17409FD01ED9F88500D810E2 /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Provider.swift; path = Network/Provider.swift; sourceTree = "<group>"; };
 		17409FD21ED9F8F900D810E2 /* Class+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Class+Util.swift"; path = "Util/Class+Util.swift"; sourceTree = "<group>"; };
 		17409FD41ED9F90100D810E2 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Network/Parser.swift; sourceTree = "<group>"; };
@@ -167,6 +169,32 @@
 			name = Detail;
 			sourceTree = "<group>";
 		};
+		173900FB1EDDF8D600D6778C /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				173900F91EDDF70A00D6778C /* SearchController.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		173900FC1EDDF8E100D6778C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				176DD6C81ED9DCA80062F77D /* MainViewController.swift */,
+				17BDCA001EDB782100464FBE /* HeroCollectionViewController.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		173900FD1EDDF8E600D6778C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				171D744C1EDB9D9D00F3D6E3 /* HeroDetailViewController.swift */,
+				176D5A2C1EDBB48900DC24A5 /* SummaryCollectionViewController.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
 		17409FCA1ED9EA9300D810E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,11 +274,10 @@
 		176DD6C61ED9DC3D0062F77D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				176DD6C81ED9DCA80062F77D /* MainViewController.swift */,
+				173900FD1EDDF8E600D6778C /* Detail */,
+				173900FC1EDDF8E100D6778C /* Main */,
+				173900FB1EDDF8D600D6778C /* Search */,
 				17409FE81EDB218100D810E2 /* NavigationController.swift */,
-				17BDCA001EDB782100464FBE /* HeroCollectionViewController.swift */,
-				171D744C1EDB9D9D00F3D6E3 /* HeroDetailViewController.swift */,
-				176D5A2C1EDBB48900DC24A5 /* SummaryCollectionViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -674,6 +701,7 @@
 				17409FD11ED9F88500D810E2 /* Provider.swift in Sources */,
 				17409FE51EDA65F400D810E2 /* Endpoint.swift in Sources */,
 				176DD6D61ED9E32D0062F77D /* UICollectionReusableView+Extension.swift in Sources */,
+				173900FA1EDDF70A00D6778C /* SearchController.swift in Sources */,
 				176D5A331EDCBB0E00DC24A5 /* NSAttributedString+Extension.swift in Sources */,
 				171D744D1EDB9D9D00F3D6E3 /* HeroDetailViewController.swift in Sources */,
 				176D5A201EDBAA2E00DC24A5 /* Summary.swift in Sources */,
