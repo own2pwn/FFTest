@@ -165,7 +165,7 @@ extension HeroCollectionViewController: UICollectionViewDataSource {
     
     // MARK: Loading Elements
     
-    /// Loads initial batch of Heros
+    /// Loads initial batch of Heroes
     fileprivate func loadInitial(filtering string: String? = nil) {
         
         self.list = nil
@@ -177,7 +177,7 @@ extension HeroCollectionViewController: UICollectionViewDataSource {
             }
     }
     
-    /// Loads next batch of Heros, offsetted by the current count or an estimated value
+    /// Loads next batch of Heroes, offsetted by the current count or an estimated value
     fileprivate func loadMore() {
         
         guard isLoading == false else { return }
